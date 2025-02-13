@@ -21,6 +21,7 @@
             "required": false,
             "default": "url",
             "data": [
+                { "title": "Domain", "value": "domain" },
                 { "title": "URL", "value": "url" },
                 { "title": "Tab Title", "value": "tabtitle" },
                 { "title": "\"Source\"", "value": "source" }

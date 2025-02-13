@@ -3,7 +3,7 @@ import { BrowserExtension, Clipboard, showHUD, getSelectedText, environment, get
 // Define preference types
 type Preferences = {
     includeAccessDate: boolean;
-    useTabTitle: "url" | "tabtitle" | "source";
+    useTabTitle: "url" | "tabtitle" | "source" | "domain";
     quoteStyle: "markdown" | "latex" | "plain";
     includeTextFragment: boolean;
 };
@@ -78,10 +78,12 @@ function formatQuote(text: string, style: Preferences["quoteStyle"]): string {
 
 function getSourceText(activeTab: BrowserExtension.Tab, preferences: Preferences): string {
     switch (preferences.useTabTitle) {
-        case "url":
+        case "domain":
             return activeTab.url!.match(/(https?:\/\/)([^\/]*)/)![2];
         case "tabtitle":
             return activeTab.title ?? "Source";
+        case "url":
+            return activeTab.url!
         default:
             return "Source";
     }
