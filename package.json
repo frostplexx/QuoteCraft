@@ -19,7 +19,7 @@
             "name": "useTabTitle",
             "type": "dropdown",
             "required": false,
-            "default": "url",
+            "default": "domain",
             "data": [
                 { "title": "Domain", "value": "domain" },
                 { "title": "URL", "value": "url" },

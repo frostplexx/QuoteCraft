@@ -90,7 +90,15 @@ function getSourceText(activeTab: BrowserExtension.Tab, preferences: Preferences
 }
 
 function createTextFragmentUrl(baseUrl: string, text: string): string {
-    const cleanText = text.trim().replace(/\s+/g, ' ');
+    const cleanText = text
+        .trim()
+        .replace(/\s+/g, ' ')
+        .replaceAll("\(", "%28")
+        .replaceAll("\)", "%29")
+        .replaceAll("\{", "%7B")
+        .replaceAll("\}", "%7D")
+        .replaceAll("\[", "%5B")
+        .replaceAll("\]", "%5D");
     const encodedText = encodeURIComponent(cleanText);
     return `${baseUrl}#:~:text=${encodedText}`;
 }
